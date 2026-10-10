@@ -33,13 +33,13 @@ function animateJourney(target){
  if(matchMedia('(prefers-reduced-motion: reduce)').matches){travel(target);return}
  const start=progress,started=performance.now(),duration=12500+Math.abs(target-start)*5500;
  $('journey').setAttribute('aria-busy','true');
- let elapsed=0,previousTime=started;
+ let elapsed=0,previousTime=started;const frameSamples=[];
  const frame=now=>{
-  elapsed+=Math.max(0,Math.min(40,now-previousTime));previousTime=now;
+  const frameMs=Math.max(0,now-previousTime);frameSamples.push(frameMs);elapsed+=Math.min(40,frameMs);previousTime=now;
   const t=Math.min(1,elapsed/duration);
   set(travelProgress(start,target,t));soundMotion(.025);
   if(t<1)returnFrame=requestAnimationFrame(frame);
-  else{returnFrame=0;set(target);wheelQuietUntil=now+700;$('journey').removeAttribute('aria-busy')}
+  else{frameSamples.sort((a,b)=>a-b);$('journey').dataset.travelMedianMs=frameSamples[Math.floor(frameSamples.length*.5)].toFixed(1);$('journey').dataset.travelP95Ms=frameSamples[Math.floor(frameSamples.length*.95)].toFixed(1);returnFrame=0;set(target);wheelQuietUntil=now+700;$('journey').removeAttribute('aria-busy')}
  };
  returnFrame=requestAnimationFrame(frame);
 }

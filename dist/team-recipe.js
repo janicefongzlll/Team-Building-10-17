@@ -1,6 +1,7 @@
 import { finishBakery } from './bakery-finish.js';
 import { buildRecipeGallery } from './recipe-gallery.js';
 import { buildArtisanBakery } from './artisan-bakery.js';
+import { prepareRecipeRendering } from './recipe-performance.js';
 export const TEAM_QUALITIES=[
  ['Trust','Believe in each other'],['Respect','Value different opinions'],['Communication','Speak clearly and listen well'],['Accountability','Take responsibility for your actions'],['Empathy','Understand others’ perspectives'],['Initiative','Take action without always being asked'],['Inclusiveness','Make everyone feel valued'],['Support','Help each other when needed'],['Positive Attitude','Stay constructive and optimistic'],['Problem-Solving','Focus on solutions, not blame'],['Speak Up','Feel comfortable sharing ideas'],['Appreciation','Recognize others’ contribution'],['Adaptability','Embrace change and challenges'],['Growth Mindset','Learn and improve together'],['Shared Goals','Work toward a common purpose']
 ];
@@ -10,8 +11,8 @@ export function buildTeamRecipe(w,THREE){
  const cream=w.mat('#eee7d8','stone'),white=w.mat('#f3f3e9','plaster'),oak=w.mat('#ae8964','wood'),navy=w.mat('#275954','paint'),steel=w.mat('#536768','metal'),brass=new THREE.MeshStandardMaterial({color:'#b79b64',metalness:.65,roughness:.3}),glass=new THREE.MeshStandardMaterial({color:'#a7d5e1',transparent:true,opacity:.16,roughness:.12,metalness:.18,envMapIntensity:1.6,depthWrite:false,side:THREE.DoubleSide});
  const marbleCanvas=document.createElement('canvas');marbleCanvas.width=marbleCanvas.height=1024;const mc=marbleCanvas.getContext('2d');mc.fillStyle='#f1eee6';mc.fillRect(0,0,1024,1024);for(let i=0;i<26;i++){mc.beginPath();mc.moveTo(-50,i*47);mc.bezierCurveTo(240,i*47-80,510,i*47+140,1080,i*47+200);mc.strokeStyle=i%3?'#929c9b20':'#ae96853b';mc.lineWidth=i%3?1.2:2.6;mc.stroke();}const marbleMap=new THREE.CanvasTexture(marbleCanvas);marbleMap.colorSpace=THREE.SRGBColorSpace;const marble=new THREE.MeshPhysicalMaterial({color:'#fffdf7',map:marbleMap,roughness:.29,metalness:.05,clearcoat:.25,clearcoatRoughness:.25});
  const china=new THREE.MeshStandardMaterial({color:'#fffaf0',roughness:.3}),bread=new THREE.MeshStandardMaterial({color:'#ce8d3e',roughness:.75}),blue=w.mat('#3d729c','paint'),red=w.mat('#c53f4e','paint'),gold=w.mat('#dcaa43','paint'),leaf=w.mat('#548861','paint');
- const sphere=(r,m,p,x,y,z,sx=1,sy=1,sz=1)=>{const o=new THREE.Mesh(new THREE.SphereGeometry(r,24,16),m);o.position.set(x,y,z);o.scale.set(sx,sy,sz);o.castShadow=o.receiveShadow=true;p.add(o);return o;};
- const ring=(r,t,m,p,x,y,z,rx=0)=>{const o=new THREE.Mesh(new THREE.TorusGeometry(r,t,12,40),m);o.position.set(x,y,z);o.rotation.x=rx;p.add(o);return o;};
+ const sphere=(r,m,p,x,y,z,sx=1,sy=1,sz=1)=>{const o=new THREE.Mesh(new THREE.SphereGeometry(r,16,12),m);o.position.set(x,y,z);o.scale.set(sx,sy,sz);o.castShadow=o.receiveShadow=true;p.add(o);return o;};
+ const ring=(r,t,m,p,x,y,z,rx=0)=>{const o=new THREE.Mesh(new THREE.TorusGeometry(r,t,8,24),m);o.position.set(x,y,z);o.rotation.x=rx;p.add(o);return o;};
  const sign=(s,a,b,x,y,z)=>{const o=w.text(s,a,b,'#275954','#fff5df');o.position.set(x,y,z);root.add(o);return o;};
  w.plaza(root,28,-5,66,96);box(190,.35,175,w.mat('#799c84','earth'),root,12,-1.65,0);box(8,1.1,65,cream,root,7,.2,-5);box(.35,.05,64,w.palette.gold,root,3.3,.79,-5);
  // A separate glass-vaulted station canopy, beside an open railway corridor.
@@ -50,5 +51,5 @@ export function buildTeamRecipe(w,THREE){
  for(const side of [-1.32,1.32]){const curve=new THREE.CatmullRomCurve3(Array.from({length:90},(_,i)=>w.at(w.recipeStart+(w.recipeT-w.recipeStart)*i/89,side,.04)));rail.add(new THREE.Mesh(new THREE.TubeGeometry(curve,90,.09,8,false),w.palette.rail));}
  const n=Math.ceil(w.recipePath.getLength()/1.25),ties=new THREE.InstancedMesh(new THREE.BoxGeometry(4.6,.2,.3),w.palette.darkWood,n),dummy=new THREE.Object3D();for(let i=0;i<n;i++){const f=w.frameAt(w.recipeStart+(w.recipeT-w.recipeStart)*i/(n-1));dummy.position.copy(f.p);dummy.position.y=1.17;dummy.rotation.set(0,f.angle,0);dummy.updateMatrix();ties.setMatrixAt(i,dummy.matrix);}ties.castShadow=ties.receiveShadow=true;rail.add(ties);
  for(let i=1;i<=6;i++){const t=w.recipeStart+(w.recipeT-w.recipeStart)*i/6,p=new THREE.Group();p.position.copy(w.at(t,5.8));p.rotation.y=w.frameAt(t).angle;rail.add(p);cyl(.13,.18,9.5,steel,p,0,3.9);box(8,.15,.15,steel,p,-3.6,8.65);if(i<6){const a=w.at(t,0,8.4),b=w.at(w.recipeStart+(w.recipeT-w.recipeStart)*(i+1)/6,0,8.4),mid=a.clone().lerp(b,.5);mid.y-=.2;rail.add(new THREE.Mesh(new THREE.TubeGeometry(new THREE.QuadraticBezierCurve3(a,mid,b),16,.018,6,false),steel));}}
- w.batchStatic(root);w.batchStatic(rail);
+ prepareRecipeRendering(w,root,THREE);w.batchStatic(root);w.batchStatic(rail);
 }
