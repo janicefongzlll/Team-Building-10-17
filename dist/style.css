@@ -1,0 +1,159 @@
+:root{--ivory:#f7fbff;--gold:#bcddec;--ink:#284f50}*{box-sizing:border-box}html,body{width:100%;height:100%;margin:0;overflow:hidden;overscroll-behavior:none}body{background:#87bbc9;font-family:Arial,Helvetica,sans-serif;color:var(--ivory)}button{font:inherit;background:none;border:0;color:inherit;cursor:pointer}button:focus-visible,input:focus-visible{outline:2px solid var(--gold);outline-offset:6px}button:disabled{opacity:.25;cursor:default}#journey{height:100%;position:relative;isolation:isolate;overflow:hidden;touch-action:none;user-select:none}#world{position:absolute;inset:0;z-index:-2}#world canvas{display:block;width:100%;height:100%}.shade{position:absolute;inset:0;pointer-events:none;z-index:-1;background:linear-gradient(0deg,#21465a75,transparent 16%,transparent 87%,#234c6420)}header{position:absolute;inset:4.8% 4.5% auto;display:flex;align-items:center;justify-content:space-between;font-size:10px;letter-spacing:2px;pointer-events:none}.brand{display:flex;align-items:center;gap:14px}.mark{border:1px solid #f2f9fca8;border-radius:5px;padding:0 5px;line-height:27px;font-size:21px;transform:rotate(180deg)}.brand b{font-size:11px;font-weight:500;letter-spacing:2.2px}.brand i{height:15px;width:1px;background:#edf8ff5c}.brand>span:last-child{font-size:8px}.destination{font-size:8px;letter-spacing:1.8px}.destination span{padding:0 17px;color:var(--gold)}section{position:absolute;left:6.5%;top:22%;pointer-events:none;filter:drop-shadow(0 2px 10px #123b4055)}.eyebrow{font-size:10px;letter-spacing:3px;display:flex;align-items:center;gap:13px;margin:0 0 18px}.eyebrow:before{content:'';width:25px;height:1px;background:var(--gold)}h1{font:normal clamp(46px,5.8vw,88px)/1 Georgia,serif;letter-spacing:-.04em;margin:0}#arrival{top:18%}#arrival h1{font-size:clamp(38px,4.6vw,68px)}.team-hint{font-size:8px;letter-spacing:2px;margin:24px 0 12px}.team-controls{display:flex;gap:14px;pointer-events:auto}.team-controls button{font-size:12px;letter-spacing:1px;padding:8px 0;border-bottom:1px solid #edf6fc80}.team-controls button[aria-pressed=true]{border-color:var(--gold);color:var(--gold)}#travel-label{position:absolute;left:6.5%;bottom:17%;font-size:9px;letter-spacing:3px;text-shadow:0 2px 8px #204743;pointer-events:none}footer{position:absolute;bottom:4.5%;left:4.5%;right:4.5%;display:flex;align-items:center;gap:5vw}.scroll-hint{font-size:8px;letter-spacing:1.8px;display:flex;align-items:center;gap:14px}.scroll-hint small{display:block;font-size:7px;letter-spacing:1.1px;opacity:.62;margin-top:7px}.scroll-icon{font-size:28px;font-weight:100;color:var(--gold)}.scrubber{flex:1;max-width:470px;margin:auto}.scrubber label{display:flex;justify-content:space-between;font-size:8px;letter-spacing:1.5px;color:#eef9ffcc}.scrubber label span{color:var(--gold);font-size:9px;font-variant-numeric:tabular-nums}.rail{display:flex;align-items:center;gap:0;margin-top:7px}.station-dot{width:6px;height:6px;border:1px solid #f2f9fc;border-radius:50%;flex:none}.station-dot:first-child{background:var(--ivory)}input[type=range]{appearance:none;width:100%;height:24px;cursor:ew-resize;background:transparent;margin:0;touch-action:none}input[type=range]::-webkit-slider-runnable-track{height:1px;background:#dbeefa90}input[type=range]::-moz-range-track{height:1px;background:#dbeefa90}input[type=range]::-webkit-slider-thumb{appearance:none;width:8px;height:8px;border-radius:50%;margin-top:-3.5px;background:var(--gold);box-shadow:0 0 0 4px #e9c88225}input[type=range]::-moz-range-thumb{width:8px;height:8px;border:0;border-radius:50%;background:var(--gold)}.tools{display:flex;gap:18px;align-items:center}.tools button{font-size:17px;padding:6px 3px}.tools button:hover{color:var(--gold)}#sound{font-size:13px}#sound span{font-size:7px;letter-spacing:1px;margin-left:3px}.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}[hidden]{display:none!important}#failure{position:absolute;inset:0;padding:25vh 12vw;background:#e8dfc3;color:#294e4d;z-index:20}#failure h2{font:42px Georgia,serif}#failure p{max-width:550px;line-height:1.7}@media(max-width:900px){.destination{display:none}.scroll-hint small{display:none}.scroll-hint{font-size:7px;letter-spacing:1px}.scrubber{max-width:260px}footer{gap:22px}.tools{gap:12px}.brand>span:last-child{font-size:7px}.scrubber label{font-size:7px}.team-controls{gap:12px}}@media(max-width:600px){header{top:4%}.brand>span:last-child,.brand i{display:none}section{top:20%;left:7%}h1{font-size:58px}footer{bottom:3.5%;gap:15px;flex-wrap:wrap}.scroll-hint{width:100%;justify-content:center;order:3;margin-top:7px}.scroll-icon{font-size:19px}.scrubber{max-width:none;min-width:160px}.tools{gap:9px}.tools button{font-size:16px}.scrubber label{font-size:6px;letter-spacing:1px}#travel-label{bottom:19%;font-size:8px}#arrival{top:18%}.team-controls button{font-size:11px}.eyebrow{font-size:8px}}@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto}}
+
+#team-picker{position:absolute;left:6.5%;bottom:16%;padding:0 0 8px;filter:drop-shadow(0 2px 7px #163c40);pointer-events:none}#team-picker .team-hint{margin:0 0 8px;color:#f7fbff}#team-picker .team-controls{gap:24px}#team-picker button{min-width:54px;min-height:42px;font-size:14px;text-align:left}#arrival{top:15%}#arrival h1{font-size:clamp(36px,4vw,62px)}@media(max-width:600px){#team-picker{left:7%;bottom:23%}#team-picker .team-controls{gap:18px}#team-picker button{font-size:12px;min-width:40px}#arrival{top:15%}}
+/* One persistent editorial heading, positioned and scaled entirely by scroll. */
+#station-title{position:absolute;left:0;top:0;width:max-content;margin:0;font:normal 72px/1 Georgia,serif;letter-spacing:-.04em;color:#f7fbff;text-shadow:0 2px 14px #24495433;transform-origin:0 0;pointer-events:none;opacity:0;z-index:3;white-space:nowrap;will-change:transform}
+#arrival-label{position:absolute;left:6.5%;top:15%;opacity:0;pointer-events:none}
+#world{overflow:visible;will-change:filter}
+#focus-veil{position:absolute;inset:0;background:#eff8ff;opacity:0;pointer-events:none;z-index:-1}
+#team-picker{filter:drop-shadow(0 2px 7px #163c4066)}
+@media(max-width:600px){.scroll-hint small{display:none}}
+/* The cover shares the scene and fades only its typography as the camera enters. */
+#cover{left:50%;top:20%;width:90%;text-align:center;transform:translate(-50%,-50%);filter:none;color:#214657;z-index:4}
+#cover h1{font:normal clamp(58px,8.2vw,128px)/1.05 Georgia,serif;letter-spacing:-.025em;white-space:nowrap;text-shadow:0 1px 12px #e8f7ff55}
+.cover-emblem{width:96px;height:54px;margin:0 auto 18px;opacity:.85}
+.cover-rule{width:45%;height:1px;background:currentColor;margin:20px auto 18px;opacity:.45}
+.cover-subtitle{font:normal clamp(18px,2.4vw,36px)/1.2 Georgia,serif;letter-spacing:.20em;margin:0}
+#cover-scroll{position:absolute;bottom:6%;left:50%;transform:translateX(-50%);margin:0;font-size:9px;letter-spacing:2.8px;color:#f4fbff;text-shadow:0 1px 6px #264655;pointer-events:none;opacity:0}
+#cover-scroll span{display:inline-block;margin-left:16px;font-size:18px}
+.is-cover #cover-scroll{opacity:1}
+.is-cover header{opacity:0;pointer-events:none}
+.is-cover footer .scroll-hint,.is-cover footer .scrubber,.is-cover #back,.is-cover #forward{visibility:hidden}
+.is-cover footer{justify-content:flex-end}
+@media(max-width:600px){#cover{top:33%}#cover h1{font-size:clamp(42px,10vw,64px)}.cover-subtitle{font-size:19px;letter-spacing:.12em}.cover-emblem{width:72px;height:42px}.cover-rule{width:65%}}
+/* Travel editorial identity: display serif, compact bold type and railway microtype. */
+:root{--navy:#12384c;--coral:#d96856;--forest:#245a50}
+#cover{top:27%;width:min(82%,1000px);text-align:left;color:var(--navy)}
+.cover-kicker{font-size:11px;font-weight:700;letter-spacing:.25em;margin:0 0 15px;display:flex;align-items:center;gap:14px}
+.tiny-route{font-size:25px;color:var(--coral);letter-spacing:0}
+#cover h1.cover-title{display:flex;align-items:center;gap:24px;white-space:normal;font-size:clamp(64px,8.7vw,126px);line-height:.83;letter-spacing:-.05em}
+.cover-edition{font:italic 1.35em/.8 Georgia,serif;color:var(--coral);align-self:center;position:relative}
+.cover-edition sup{font:700 .18em/1 Arial,sans-serif;letter-spacing:.04em;position:absolute;right:-.02em;top:-.55em}
+.cover-words{display:flex;flex-direction:column}
+.cover-words em{font:italic 1.03em/.82 Georgia,serif;letter-spacing:-.065em;display:block}
+.cover-words strong{font-family:'Arial Black','Helvetica Neue',Arial,sans-serif;font-weight:900;font-size:.79em;line-height:1.05;letter-spacing:-.055em}
+.cover-caption{margin:18px 0 0;font:700 11px/1.7 Arial,sans-serif;letter-spacing:.14em;color:var(--navy);text-shadow:0 1px 10px #f7fcff}
+.cover-caption span{margin-left:12px}
+.cover-footnote{display:flex;justify-content:space-between;width:min(100%,610px);border-top:1px solid #234e6455;margin-top:13px;padding-top:8px;font-size:8px;letter-spacing:.18em}
+#opening{top:19%;left:6.5%;filter:none}
+#opening .eyebrow{font-size:10px;letter-spacing:.20em;gap:13px;margin-bottom:17px;text-shadow:0 2px 7px #16384c}
+#opening .eyebrow:before{display:none}
+.platform-stamp{display:inline-flex;align-items:center;justify-content:center;width:31px;height:31px;border:1px solid #ebf7ffaa;border-radius:50%;font-size:11px;letter-spacing:0}
+#opening h1{font-family:'Arial Black','Helvetica Neue',Arial,sans-serif;font-weight:900;font-size:clamp(60px,8.9vw,138px);line-height:.79;letter-spacing:-.055em;text-shadow:0 2px 20px #183c4c33}
+#opening h1>span{display:block}
+#opening h1 em{font:italic .91em/1.10 Georgia,serif;display:block;letter-spacing:-.055em;font-weight:normal}
+.departure-copy{font-size:10px;font-weight:700;letter-spacing:.24em;margin:16px 0 17px;text-shadow:0 1px 9px #16384c}
+.departure-route{font-size:8px;letter-spacing:.14em;display:flex;align-items:center;gap:12px;margin:0;color:#eefaff}
+.departure-route>span{color:#aad9e9;font-size:7px}
+.departure-route b{font-size:16px;font-weight:400}
+#station-title{font:900 72px/.84 'Arial Black','Helvetica Neue',Arial,sans-serif;letter-spacing:-.035em;color:#f7fbff;white-space:nowrap;text-shadow:0 2px 22px #234f5940}
+#station-title>span{display:block}
+.title-period{color:#d96856}
+#arrival-label{letter-spacing:.24em}
+#arrival-support{position:absolute;inset:0;opacity:0;pointer-events:none;z-index:3}
+.focus-kicker{position:absolute;left:50%;top:19%;transform:translateX(-50%);margin:0;color:var(--navy);font-size:10px;letter-spacing:.26em;font-weight:700}
+.focus-kicker span{color:var(--coral);margin-left:12px}
+.focus-copy{position:absolute;left:50%;bottom:23%;transform:translateX(-50%);margin:0;color:var(--navy);font-size:11px;font-weight:700;letter-spacing:.20em;white-space:nowrap}
+.focus-line{position:absolute;bottom:20%;left:50%;width:48px;height:2px;background:var(--coral);transform:translateX(-50%)}
+@media(max-width:600px){#cover{top:28%;width:86%}#cover h1.cover-title{font-size:clamp(40px,11vw,66px);gap:15px}.cover-kicker{font-size:8px;letter-spacing:.17em}.cover-caption{font-size:8px;letter-spacing:.07em}.cover-caption span{display:block;margin-left:0}.cover-footnote{font-size:6px}#opening h1{font-size:clamp(58px,15vw,94px)}#opening .eyebrow{font-size:8px}.departure-copy{font-size:8px;letter-spacing:.12em}.focus-copy{font-size:8px;letter-spacing:.12em}.focus-kicker{top:26%;font-size:8px}.focus-copy{bottom:29%}.focus-line{bottom:26%}}
+/* Daylight behind the departure type keeps it readable over light roofs and windows. */
+#central-veil{position:absolute;inset:0 auto 0 0;width:80%;background:linear-gradient(90deg,#f1f8ffe0 0%,#f1f8ffb3 39%,#f1f8ff59 69%,transparent 100%);opacity:0;pointer-events:none;z-index:1}
+#opening{z-index:2;color:var(--navy)}
+#opening h1{color:var(--navy);text-shadow:0 1px 2px #faffff88}
+#opening .eyebrow{color:var(--forest);font-weight:700;text-shadow:none}
+#opening .platform-stamp{border-color:#245a5077}
+.departure-copy{color:var(--forest);text-shadow:none}
+.departure-route{color:var(--navy)}
+.departure-route>span{color:#4b8ea9}
+header,footer{z-index:5}
+.is-central header,.is-central footer{color:var(--navy)}
+.is-central .mark{border-color:#315a6e80}
+.is-central .brand i{background:#315a6e55}
+.is-central .scrubber label,.is-central .scrubber label span{color:var(--navy)}
+.is-central .station-dot{border-color:#315a6e}
+.is-central .station-dot:first-child{background:#315a6e}
+.is-central input[type=range]::-webkit-slider-runnable-track{background:#315a6e88}
+.is-central input[type=range]::-webkit-slider-thumb{background:#315a6e}
+
+/* A quieter film-title composition: one serif family and one ink colour. */
+#cover{top:26%;width:min(76%,970px);color:#183f53}
+.cover-company{margin:0 0 16px;font:500 11px/1.3 Arial,Helvetica,sans-serif;letter-spacing:.32em;color:#285266}
+#cover h1.cover-title{display:block;font:normal clamp(58px,7.8vw,112px)/.98 Georgia,serif;letter-spacing:-.045em;text-shadow:0 1px 3px #ecf8ff33}
+#cover h1.cover-title>span{display:block}
+#cover h1.cover-title>em{display:block;font:italic 1em/1.02 Georgia,serif;letter-spacing:-.045em;margin-left:.38em}
+.cover-fine-line{display:block;width:52px;height:1px;background:#28526666;margin:20px 0 0}
+@media(max-width:600px){#cover{width:80%;top:26%}#cover h1.cover-title{font-size:clamp(46px,10vw,68px)}.cover-company{font-size:9px;letter-spacing:.26em;margin-bottom:14px}.cover-fine-line{margin-top:15px;width:38px}}
+/* One consistent scene-header system, independent of physical station signs. */
+:root{--scene-title:clamp(52px,min(8.5vw,15.5vh),118px)}
+#cover,#opening{left:50%;top:50%;width:max-content;max-width:86%;transform:translate(-50%,-50%);filter:none}
+#cover h1.cover-title,#opening h1,#station-title{font:900 var(--scene-title)/.84 'Arial Black','Helvetica Neue',Arial,sans-serif;letter-spacing:-.025em;color:#f7fbff;text-shadow:0 2px 22px #234f5940;text-align:left;white-space:nowrap}
+#cover h1.cover-title{display:block}
+#cover h1.cover-title>span,#opening h1>span{display:block}
+#cover h1.cover-title>span+span,#opening h1>span+span{margin-top:.045em}
+#station-title{left:50%;top:50%;transform:translate(-50%,-50%);transform-origin:50% 50%;will-change:opacity}
+#central-veil{display:none}
+#opening .eyebrow,#cover .cover-company{position:absolute;left:50%;top:calc(-31vh + 50%);transform:translateX(-50%);white-space:nowrap;margin:0;font:700 10px/1.3 Arial,sans-serif;letter-spacing:.24em;color:#183f53}
+#opening .platform-stamp{width:auto;height:auto;display:inline;border:0;border-radius:0;color:#d96856}
+#opening .eyebrow{flex-direction:row-reverse;gap:14px}
+#cover .cover-fine-line{display:none}
+#opening .departure-copy{position:absolute;left:50%;top:calc(27vh + 50%);transform:translateX(-50%);margin:0;font-size:10px;letter-spacing:.20em;white-space:nowrap;color:#183f53}
+#opening .departure-route{display:none}
+#opening .departure-copy:after{content:'';display:block;width:48px;height:2px;background:#d96856;margin:20px auto 0}
+@media(max-width:600px){:root{--scene-title:clamp(40px,9.7vw,65px)}#cover,#opening{top:50%;max-width:88%}#cover h1.cover-title,#opening h1,#station-title{font-size:var(--scene-title)}#cover .cover-company,#opening .eyebrow{top:calc(-24vh + 50%);font-size:8px;letter-spacing:.14em}#opening .departure-copy{top:calc(21vh + 50%);font-size:8px;letter-spacing:.12em}}
+
+/* Mentor stop uses the established scene title system. */
+:is(.is-mentor,.is-joanne) .focus-copy{font-size:clamp(20px,2.8vw,40px);font-weight:800;letter-spacing:.09em;color:#12384c;text-shadow:0 1px 8px #f7fbffcc}
+.rail{position:relative}.route-middle{position:absolute;left:40.2174%;z-index:1;pointer-events:none}.station-dot.completed{background:var(--gold);border-color:var(--gold)}
+.scrubber label>span{font-size:7px;color:inherit;letter-spacing:1.2px}.scrubber label>span:nth-child(2){position:absolute;left:40.2%;transform:translateX(-50%)}.scrubber label{position:relative}
+@media(max-width:600px){.scrubber label>span{font-size:5px;letter-spacing:.4px}:is(.is-mentor,.is-joanne) .focus-copy{font-size:20px;letter-spacing:.045em}}
+
+/* Game Station opens into a wide miniature city; typography leaves the skyline clear. */
+.is-game #station-title{left:6%;top:23%;font-size:clamp(42px,5.7vw,84px);text-shadow:0 2px 20px #143c4999}
+.is-game .focus-kicker{left:6%;top:12%;transform:none;color:#183f53}
+.is-game .focus-copy{left:6%;bottom:auto;top:35%;transform:none;font-size:clamp(14px,1.6vw,24px);color:#183f53;letter-spacing:.2em}
+.is-game .focus-line{display:none}
+.route-middle{left:22.9814%}.route-mentor{position:absolute;left:57.1429%;z-index:1;pointer-events:none}
+.scrubber label>span:nth-child(2){left:22.98%}.scrubber label>span:nth-child(3){position:absolute;left:57.14%;transform:translateX(-50%)}
+@media(max-width:600px){.is-game #station-title{top:24%;font-size:40px}.is-game .focus-copy{top:36%}.scrubber label>span{font-size:4px;letter-spacing:0}}
+
+.focus-copy a{color:inherit;text-decoration:underline;text-decoration-color:#183f5377;text-decoration-thickness:1px;text-underline-offset:.28em;pointer-events:auto;cursor:pointer}.focus-copy a:hover{text-decoration-color:currentColor}.focus-copy a:focus-visible{outline:2px solid var(--coral);outline-offset:6px}
+
+/* Warm ivory keeps the game title and game link legible against blue hour. */
+.is-game .focus-kicker,.is-game .focus-copy{color:#fff1d6;text-shadow:0 2px 12px #102037}
+
+/* The café uses the established centered title treatment. */
+.is-rest #station-title{font-size:var(--scene-title);text-shadow:0 2px 22px #173d4f88;will-change:transform,left,top}
+.is-rest .focus-kicker,.is-rest .focus-copy{color:#163c4b;text-shadow:0 1px 8px #f5fbff99}
+.route-middle{left:16.157%}.route-mentor{left:40.175%}.route-game{position:absolute;left:70.306%;z-index:1;pointer-events:none}
+.scrubber label>span:nth-child(2){left:16.157%}.scrubber label>span:nth-child(3){left:40.175%}.scrubber label>span:nth-child(4){position:absolute;left:70.306%;transform:translateX(-50%)}
+
+.scrubber label>span{font-size:6px;letter-spacing:.35px}.scrubber label>span:first-child{transform:translateX(-12%)}
+
+.is-recipe #station-title{font-size:var(--scene-title);text-shadow:0 2px 22px #173d4f88;will-change:transform,left,top}
+.is-recipe .focus-kicker,.is-recipe .focus-copy{color:#163c4b;text-shadow:0 1px 8px #f5fbff99}
+.route-middle{left:11.21%}.route-mentor{left:27.88%}.route-game{left:48.79%}.route-rest{position:absolute;left:65.15%;z-index:1;pointer-events:none}
+.scrubber label>span:nth-child(2){left:16%}.scrubber label>span:nth-child(3){left:36%}.scrubber label>span:nth-child(4){left:57%}.scrubber label>span:nth-child(5){position:absolute;left:78%;transform:translateX(-50%)}
+.scrubber label>span{font-size:5.5px;letter-spacing:.15px}
+
+/* Both mentor scenes share the same centered title and name layout. */
+.route-middle{left:8.706%}.route-mentor{left:21.647%}.route-game{left:37.882%}.route-rest{left:50.588%}.route-recipe{position:absolute;left:77.647%;z-index:1;pointer-events:none}
+@media(max-width:600px){.scrubber label>span{font-size:3px}}
+
+.scrubber label{height:22px}.scrubber label>span{white-space:nowrap;font-size:5px;letter-spacing:.18px;position:absolute;top:0;transform:translateX(-50%)}
+.scrubber label>span:first-child{left:0;transform:none}.scrubber label>span:nth-child(2){left:8.706%;top:11px}.scrubber label>span:nth-child(3){left:21.647%}.scrubber label>span:nth-child(4){left:37.882%;top:11px}.scrubber label>span:nth-child(5){left:50.588%}.scrubber label>span:nth-child(6){left:77.647%;top:11px}.scrubber label>span:nth-child(7){left:100%;transform:translateX(-100%)}
+
+/* Warm railway-ticket backing keeps the first mentor name clear over the platform. */
+:is(.is-mentor,.is-joanne) .focus-copy{padding:.3em .7em;background:rgba(237,178,122,.96);border:1px solid rgba(255,226,188,.65);border-radius:4px;color:#143747;text-shadow:none;box-shadow:0 3px 12px rgba(65,48,31,.10)}
+
+/* A shared optical center for both mentor headings and name tickets. */
+:is(.is-mentor,.is-joanne) #station-title{top:47%;text-align:center}
+:is(.is-mentor,.is-joanne) #station-title>span{position:relative}
+:is(.is-mentor,.is-joanne) #station-title .title-period{position:absolute;left:100%;bottom:0}
+:is(.is-mentor,.is-joanne) .focus-copy{text-align:center;text-indent:.09em;line-height:1.2}
+@media(max-width:600px){:is(.is-mentor,.is-joanne) .focus-copy{text-indent:.045em}}
+
+/* End frame: only the closing words, in the same scene title family. */
+.is-final #station-title{text-align:center;top:50%}
+.is-final #arrival-support{display:none}
+.route-middle{left:7.475%}.route-mentor{left:18.586%}.route-game{left:32.525%}.route-rest{left:43.434%}.route-recipe{left:66.667%}.route-joanne{position:absolute;left:85.859%;z-index:1;pointer-events:none}
+.scrubber label>span:nth-child(2){left:7.475%}.scrubber label>span:nth-child(3){left:18.586%}.scrubber label>span:nth-child(4){left:32.525%}.scrubber label>span:nth-child(5){left:43.434%}.scrubber label>span:nth-child(6){left:66.667%}.scrubber label>span:nth-child(7){left:85.859%;right:auto;transform:translateX(-50%);top:0}.scrubber label>span:nth-child(8){position:absolute;left:100%;top:11px;transform:translateX(-100%)}

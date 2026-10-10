@@ -1,0 +1,13 @@
+.DS_Store
+.openai/
+previous-version/
+*-preview.png
+render-before.png
+render-after.png
+app-before-3d.js
+*.tmp
+__pycache__/
+node_modules/
+.env
+.env.*
+!.env.example

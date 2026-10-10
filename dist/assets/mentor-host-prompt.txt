@@ -1,0 +1,4 @@
+Generated with the built-in imagegen tool, transparent PNG mode.
+
+Final editing prompt:
+Edit this exact character. REMOVE the entire white moustache. Make him clean-shaven, with absolutely no moustache, beard or facial hair. Fill the cheeks and upper lip naturally, retain a friendly smile. Keep the same bald head, eyebrows, eyes, face proportions, navy suit, bow tie, shoes, standing welcoming pose and full-body framing. REMOVE ALL background and ALL glow/halo surrounding the character. Deliver ONLY a crisp isolated character on genuinely transparent alpha: background alpha zero, no black background, no studio gradient, no glow, no floor shadow, no text. This is a PNG cutout to place directly into a railway station scene. Subtle clean daylight shading on character surfaces only.
