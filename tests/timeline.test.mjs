@@ -58,21 +58,23 @@ const cruiseStep=cruiseSamples[1]-cruiseSamples[0];
 for(let i=2;i<cruiseSamples.length;i++)assert.ok(Math.abs(cruiseSamples[i]-cruiseSamples[i-1]-cruiseStep)<1e-7,'Steady cruising speed');
 assert.ok(journeyState(travelProgress(0,.74,.045)).train-.18<cruiseStep*.002,'Gentle start');
 console.log('PASS: smooth forward/reverse legs, bounded displacement, gentle acceleration and steady cruising speed.');
-const mentorStop=experienceState(1.84);
-assert.equal(mentorStop.train,1.45);assert.equal(mentorStop.focus,1);assert.equal(mentorStop.door,1);
+// The old mentor stretch is now a transit corridor on the direct Ice Breaker → Game Station leg.
+for(let i=1001;i<=2160;i++){const state=experienceState(i/1000);assert.equal(state.transit,true);assert.equal(state.focus,0);assert.equal(state.arrival,0);assert.match(state.phase,/GAME STATION/);assert.ok(!state.mentor,'Mr Pui must not appear before Game Station');}
+const mentorStop=experienceState(9.9);
+assert.equal(mentorStop.train,4.85);assert.equal(mentorStop.focus,1);assert.equal(mentorStop.door,1);assert.equal(mentorStop.mentor,true);
 assert.match(mentorStop.phase,/MR PUI YUH TZER/);
-for(let i=1580;i<=2000;i++){const s=experienceState(i/1000);assert.equal(s.train,1.45,'Mentor train remains parked through the sharing');assert.equal(s.mentorTravel,1);}
-for(const boundary of [1,1.58,1.62,1.78])assert.ok(Math.abs(experienceState(boundary+1e-6).train-experienceState(boundary-1e-6).train)<1e-5,'No train teleport at station boundaries');
-for(const [start,end]of [[.74,1.84],[1.84,.74],[1.33,.74],[1.2,1.84]]){let prev=experienceState(start).train;for(let i=1;i<=2000;i++){const raw=travelProgress(start,end,i/2000),s=experienceState(raw);assert.ok((s.train-prev)*Math.sign(end-start)>=-1e-8);assert.ok(Math.abs(s.train-prev)<.002,'Mentor travel has bounded frame displacement');prev=s.train;}assert.equal(travelProgress(start,end,1),end);}
-assert.equal(experienceState(.74).focus,1,'Returning still restores the Ice Breaker title');
-console.log('PASS: continuous Mentor Express travel, forward/reverse navigation, parked sharing scene and exact station endpoints.');
+for(let i=9520;i<=9900;i++){const state=experienceState(i/1000);assert.equal(state.train,4.85,'Mentor remains parked before Thank You');assert.equal(state.mentorTravel,1);}
+for(const [start,end]of [[8.5,9.9],[9.9,8.5]]){let previous=experienceState(start).train;for(let i=1;i<=3000;i++){const state=experienceState(travelProgress(start,end,i/3000));assert.ok((state.train-previous)*Math.sign(end-start)>=-1e-8);assert.ok(Math.abs(state.train-previous)<.003,'Relocated mentor travel is smooth');previous=state.train;}}
+assert.match(experienceState(8.5).phase,/JOANNE GOH/);
+assert.match(experienceState(11.3).phase,/THANK YOU/);
+console.log('PASS: Mr Pui follows Joanne and precedes Thank You, with smooth reversible travel.');
 const gameStop=experienceState(3.22);
 assert.equal(gameStop.train,2.2);assert.equal(gameStop.focus,1);assert.equal(gameStop.door,1);assert.equal(gameStop.game,true);
 for(let i=2940;i<=3220;i++)assert.equal(experienceState(i/1000).train,2.2,'Train stays parked at Game Station');
 for(const boundary of [2,2.16,2.94,2.98,3.16])assert.ok(Math.abs(experienceState(boundary+1e-6).train-experienceState(boundary-1e-6).train)<1e-5,'Continuous Game Station entry');
-for(const [start,end]of [[1.84,3.22],[3.22,1.84],[2.6,1.84],[2.5,3.22]]){let previous=experienceState(start).train;for(let i=1;i<=2000;i++){const p=travelProgress(start,end,i/2000),state=experienceState(p);assert.ok((state.train-previous)*Math.sign(end-start)>=-1e-8,'No train reversal');assert.ok(Math.abs(state.train-previous)<.003,'Smooth frame displacement');previous=state.train}assert.equal(travelProgress(start,end,1),end)}
-assert.equal(experienceState(2.16).focus,0,'Mentor header clears before departure');assert.equal(experienceState(1.84).focus,1,'Returning restores mentor header');
-console.log('PASS: reversible Game Station journey, smooth departure, parked arrival and restored mentor scene.');
+for(const [start,end]of [[.74,3.22],[3.22,.74],[2.6,.74],[2.5,3.22]]){let previous=experienceState(start).train;for(let i=1;i<=2000;i++){const p=travelProgress(start,end,i/2000),state=experienceState(p);assert.ok((state.train-previous)*Math.sign(end-start)>=-1e-8,'No train reversal');assert.ok(Math.abs(state.train-previous)<.003,'Smooth frame displacement');previous=state.train}assert.equal(travelProgress(start,end,1),end)}
+assert.equal(experienceState(2.16).focus,0,'Direct transit has no intermediate header');assert.equal(experienceState(.74).focus,1,'Returning restores Ice Breaker');
+console.log('PASS: reversible Game Station journey, smooth departure, parked arrival and restored Ice Breaker scene.');
 const rest=experienceState(4.3);assert.equal(rest.rest,true);assert.equal(rest.train,2.85);assert.equal(rest.focus,1);assert.equal(rest.door,1);
 for(let i=4020;i<=4580;i++){const s=experienceState(i/1000);assert.equal(s.train,2.85,'Café camera and train stay parked while its title enlarges and returns');assert.equal(s.restTravel,1);}
 assert.equal(experienceState(3.42).focus,0,'Game title fully returns before train departs');assert.equal(experienceState(4.58).focus,0);assert.equal(experienceState(4.58).blur,0);
@@ -105,3 +107,20 @@ for(let i=6601;i<=7320;i++){const state=experienceState(i/1000);assert.equal(sta
 for(const [start,end]of [[6.6,8.5],[8.5,6.6]]){let last=experienceState(start);for(let i=1;i<=3000;i++){const raw=travelProgress(start,end,i/3000),state=experienceState(raw);assert.ok(Math.abs(state.train-last.train)<.003,'Smooth Joanne train travel');assert.ok(Math.abs((state.interior||0)-(last.interior||0))<.003,'Smooth bakery exit');assert.ok((state.train-last.train)*Math.sign(end-start)>=-1e-8);last=state;}assert.equal(travelProgress(start,end,1),end);}
 assert.equal(experienceState(6.6).interior,1,'Reverse journey restores gallery');
 console.log('PASS: Joanne mentor arrival, parked sharing, smooth reversible travel and bakery exit.');
+
+// Station navigation must match the visible route in both directions.
+const {readFileSync}=await import('node:fs');
+const app=readFileSync(new URL('../dist/app.js',import.meta.url),'utf8');
+const navigation=app.slice(app.indexOf('function returnToCentral()'),app.indexOf('// Each gesture'));
+const stops=[0,.74,3.22,4.3,5.47,6.6,8.5,9.9,11.3];
+for(let i=1;i<stops.length-1;i++){
+ let target;const run=new Function('progress','animateJourney','travel',navigation+'return {back:returnToCentral,next:advanceJourney};')(stops[i],x=>target=x,x=>target=x);
+ run.next();assert.equal(target,stops[i+1],'Next reaches the next event station');
+ run.back();assert.equal(target,stops[i-1],'Previous restores the prior event station');
+}
+for(const boundary of [1,2.16,8.5,8.72,9.52,9.9,10.12,10.92]){
+ const before=experienceState(boundary-1e-7),after=experienceState(boundary+1e-7);
+ assert.ok(Math.abs(before.train-after.train)<1e-5,'Continuous train at revised route boundaries');
+ assert.ok(Math.abs(before.door-after.door)<1e-5,'No snapping doors at revised route boundaries');
+}
+console.log('PASS: event navigation skips the former mentor stop and visits Joanne → Mr Pui → Thank You in both directions.');

@@ -1,7 +1,7 @@
 // Curated streets and planting sit outside every train and camera corridor.
 export function upgradeJourneyEnvironment(w,T){
  const root=new T.Group();root.userData.dynamic=true;w.scene.add(root);w.journeyDetail=root;
- const routes=[[w.path,w.cameraCurve,w.lookCurve],[w.extensionPath,w.mentorCameraCurve,w.mentorLookCurve],[w.gamePath,w.gameCameraCurve,w.gameLookCurve],[w.restPath,w.restCameraCurve,w.restLookCurve],[w.recipePath,w.recipeCameraCurve,w.recipeLookCurve],[w.joannePath,w.joanneCameraCurve,w.joanneLookCurve],[w.finalPath,w.finalCameraCurve,w.finalLookCurve]];
+ const routes=[[w.path,w.cameraCurve,w.lookCurve],[w.extensionPath,w.mentorCameraCurve,w.mentorLookCurve],[w.gamePath,w.gameCameraCurve,w.gameLookCurve],[w.restPath,w.restCameraCurve,w.restLookCurve],[w.recipePath,w.recipeCameraCurve,w.recipeLookCurve],[w.joannePath,w.joanneCameraCurve,w.joanneLookCurve],[w.finalPath,w.mentorLastCameraCurve,w.mentorLastLookCurve],[w.finalPath,w.finalCameraCurve,w.finalLookCurve]];
  const rails=[],views=[];for(const [route,cam,aim] of routes)for(let i=0;i<=100;i++){rails.push(route.getPointAt(i/100));views.push([cam.getPoint(i/100),aim.getPoint(i/100)]);}
  for(let i=0;i<=80;i++)views.push([w.recipeInteriorCurve.getPoint(i/80),w.recipeInteriorLook.getPoint(i/80)]);
  w.scene.updateMatrixWorld(true);const existing=[];w.scene.traverse(m=>{if(m.isMesh&&m.geometry.type==='BoxGeometry'&&m.geometry.parameters.height>2.5)existing.push(new T.Box3().setFromObject(m).expandByScalar(2));});

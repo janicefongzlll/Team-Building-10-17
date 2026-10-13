@@ -1,6 +1,6 @@
 # MJM LINE — Railway presentation
 
-Current journey: **PUI Groups cover → MJM Central → Ice Breaker → Mentor Express (Mr Pui Yuh Tzer) → Game Station → Rest Station → Team Recipe → Leadership Line (Joanne Goh) → Final Stop / Thank You**.
+Current journey: **PUI Groups cover → MJM Central → Ice Breaker → Game Station → Rest Station → Team Recipe → Leadership Line (Joanne Goh) → Mentor Express (Mr Pui Yuh Tzer) → Final Stop / Thank You**.
 
 ## Open
 
@@ -22,13 +22,13 @@ The repository root `index.html` opens the presentation in `dist/` when served b
 
 ## Game Station
 
-The route continues from Mentor Express into an open miniature landmark city. Low coral canopies, coloured property paving, giant dice, gardens and original Blender miniatures distinguish the station from the earlier terminals while retaining their daylight, materials and railway design.
+The route continues from Ice Breaker into an open miniature landmark city. Low coral canopies, coloured property paving, giant dice, gardens and original Blender miniatures distinguish the station from the earlier terminals while retaining their daylight, materials and railway design.
 
 The original eight exports are retained: Petronas Twin Towers, Eiffel Tower, Big Ben, Taj Mahal, Sydney Opera House, Neuschwanstein Castle, Pyramids of Giza and Marina Bay Sands. Editable originals remain in `../art/blender-landmarks/`; local source exports are copied into `dist/assets/landmarks/`. `dist/game-assets.js` contains the embedded model bytes, decoded synchronously with their original materials and transforms. The final skyline leaves the railway and camera sightline open.
 
 The environment upgrade adds Colosseum, Taipei 101, Sagrada Família and Acropolis. Eight perimeter European buildings, café terraces, boulevards, crossings, pocket parks, street furniture and property-colour paving connect the landmarks into districts. Three layers of generated Alpine terrain and soft cloud banks replace the old Game Station backdrop. All twelve landmark entrances face the audience. The detailed artist exports replace the simplified game meshes. The camera and navigation remain unchanged. Shared Blender materials reduce rendering overhead. The whole railway uses adaptive supersampling, 4K shadow maps, 1024px colour textures, smoother 512px surface maps and rounded architectural edges. Late-built trees now receive individual leaf detail as well.
 
-Timeline: Mentor focus at 1.84; title clears through 2–2.16; travel from 2.16–2.94; Game Station focus ends at 3.22. Camera and train park after arrival. The final station does not restart automatically. Earlier progress ranges remain unchanged.
+Timeline: Ice Breaker continues directly to Game Station in one gesture. Joanne remains at 8.5; Mr Pui’s relocated Mentor Express is at 9.9; Thank You is at 11.3. Each station parks until the next gesture, and the route is reversible.
 
 ## Build and checks
 
@@ -43,11 +43,11 @@ Rest Station follows Game Station: a daylight Swiss Grand Café with a dining te
 Team Recipe is the next station after Rest Station. Its new range uses two gesture-triggered journeys: first stop at the bakery entrance and header, then enter the bakery and stop at the gallery. The train arrives before the title focus; the title returns before entering the glass bakery. The final view displays all 15 qualities and their reference descriptions together. End jumps to the gallery. All visuals and gallery textures are generated locally and embedded in the offline build.
 
 ### Leadership Line — Joanne Goh
-After the Team Recipe gallery, one forward wheel gesture or Next action completes the bakery exit, railway journey, and Joanne's mentor arrival. It stops for the sharing until another input. Previous returns to the gallery. The character uses the same transparent rendered-figure format as the first mentor and is included in the offline bundle. The new terminal has a clear foreground, a golden-hour sky, and a dedicated route entry. End now jumps to Joanne's sharing scene.
+After the Team Recipe gallery, one forward wheel gesture or Next action completes the bakery exit, railway journey, and Joanne's mentor arrival. It stops for the sharing until another input. Previous returns to the gallery. The character uses the same transparent rendered-figure format as Mr Pui and is included in the offline bundle. The new terminal has a clear foreground, a golden-hour sky, and a dedicated route entry. End jumps to the final Thank You frame.
 
 
 ### Final Stop — Thank You
-After Joanne, one forward gesture continues along the railway to a terminal built with the same architecture as MJM Central. The final frame shows only the large THANK YOU heading. The train parks before the heading appears, and the presentation stays at the end. Previous returns to Joanne. End jumps to this final frame. The ending is included in the standalone offline HTML. Local geometry and timeline tests verify camera/rail clearance, reversible travel, and a stable endpoint; browser visual verification was unavailable during this update.
+After Joanne, one forward gesture reaches Mr Pui Yuh Tzer at Mentor Express. The next gesture continues along the railway to a terminal built with the same architecture as MJM Central. The final frame shows only the large THANK YOU heading. The train parks before the heading appears, and the presentation stays at the end. Previous returns to Mr Pui. End jumps to this final frame. The ending is included in the standalone offline HTML. Local geometry and timeline tests verify camera/rail clearance, reversible travel, and a stable endpoint; browser visual verification was unavailable during this update.
 
 
 ### Railway and train finish upgrade

@@ -157,3 +157,7 @@ header,footer{z-index:5}
 .is-final #arrival-support{display:none}
 .route-middle{left:7.475%}.route-mentor{left:18.586%}.route-game{left:32.525%}.route-rest{left:43.434%}.route-recipe{left:66.667%}.route-joanne{position:absolute;left:85.859%;z-index:1;pointer-events:none}
 .scrubber label>span:nth-child(2){left:7.475%}.scrubber label>span:nth-child(3){left:18.586%}.scrubber label>span:nth-child(4){left:32.525%}.scrubber label>span:nth-child(5){left:43.434%}.scrubber label>span:nth-child(6){left:66.667%}.scrubber label>span:nth-child(7){left:85.859%;right:auto;transform:translateX(-50%);top:0}.scrubber label>span:nth-child(8){position:absolute;left:100%;top:11px;transform:translateX(-100%)}
+
+/* Route labels follow the revised event order, with Mr Pui immediately before Thank You. */
+.route-middle{left:6.549%}.route-game{left:28.496%}.route-rest{left:38.053%}.route-recipe{left:58.407%}.route-joanne{left:75.221%}.route-mentor{left:87.611%}
+.scrubber label>span:nth-child(2){left:6.549%;top:11px}.scrubber label>span:nth-child(3){left:28.496%;top:0}.scrubber label>span:nth-child(4){left:38.053%;top:11px}.scrubber label>span:nth-child(5){left:58.407%;top:0}.scrubber label>span:nth-child(6){left:75.221%;top:11px}.scrubber label>span:nth-child(7){left:87.611%;top:0}
