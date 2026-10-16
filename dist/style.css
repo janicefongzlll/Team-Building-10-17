@@ -101,6 +101,9 @@ header,footer{z-index:5}
 #opening .departure-copy:after{content:'';display:block;width:48px;height:2px;background:#d96856;margin:20px auto 0}
 @media(max-width:600px){:root{--scene-title:clamp(40px,9.7vw,65px)}#cover,#opening{top:50%;max-width:88%}#cover h1.cover-title,#opening h1,#station-title{font-size:var(--scene-title)}#cover .cover-company,#opening .eyebrow{top:calc(-24vh + 50%);font-size:8px;letter-spacing:.14em}#opening .departure-copy{top:calc(21vh + 50%);font-size:8px;letter-spacing:.12em}}
 
+/* Keep the company name prominent and close to the opening film title. */
+#cover .cover-company{top:auto;bottom:calc(100% + clamp(18px,3vh,28px));font:800 clamp(20px,2.4vw,34px)/1.2 Arial,Helvetica,sans-serif;letter-spacing:.16em;color:#f7fbff;text-shadow:0 2px 12px #173d4f99}
+
 /* Mentor stop uses the established scene title system. */
 :is(.is-mentor,.is-joanne) .focus-copy{font-size:clamp(20px,2.8vw,40px);font-weight:800;letter-spacing:.09em;color:#12384c;text-shadow:0 1px 8px #f7fbffcc}
 .rail{position:relative}.route-middle{position:absolute;left:40.2174%;z-index:1;pointer-events:none}.station-dot.completed{background:var(--gold);border-color:var(--gold)}
