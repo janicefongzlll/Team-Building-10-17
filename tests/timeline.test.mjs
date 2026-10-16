@@ -35,7 +35,7 @@ assert.equal(experienceState(-1).cover,1);
 assert.equal(experienceState(-1).opening,0);
 assert.equal(experienceState(0).cover,0);
 assert.equal(experienceState(0).opening,1);
-for(let i=0;i<=1000;i++){
+for(let i=0;i<=940;i++){
  const original=journeyState(i/1000),enhanced=experienceState(i/1000);
  for(const key of Object.keys(original))assert.equal(enhanced[key],original[key],'Original journey remains unchanged: '+key);
 }
@@ -49,7 +49,7 @@ for(const [start,end]of [[0,.74],[.74,0],[.74,1],[1,0],[.27,.74],[.41,0],[.89,1]
   const p=travelProgress(start,end,i/2000);
   assert.ok(p>=Math.min(start,end)-1e-9&&p<=Math.max(start,end)+1e-9,'No overshoot');
   assert.ok((p-last)*Math.sign(end-start)>=-1e-9,'No direction reversal');
-  assert.ok(Math.abs(journeyState(p).train-journeyState(last).train)<.001,'No sudden train displacement');
+  assert.ok(Math.abs(experienceState(p).train-experienceState(last).train)<.001,'No sudden train displacement');
   last=p;
  }
 }
@@ -59,7 +59,7 @@ for(let i=2;i<cruiseSamples.length;i++)assert.ok(Math.abs(cruiseSamples[i]-cruis
 assert.ok(journeyState(travelProgress(0,.74,.045)).train-.18<cruiseStep*.002,'Gentle start');
 console.log('PASS: smooth forward/reverse legs, bounded displacement, gentle acceleration and steady cruising speed.');
 // The old mentor stretch is now a transit corridor on the direct Ice Breaker → Game Station leg.
-for(let i=1001;i<=2160;i++){const state=experienceState(i/1000);assert.equal(state.transit,true);assert.equal(state.focus,0);assert.equal(state.arrival,0);assert.match(state.phase,/GAME STATION/);assert.ok(!state.mentor,'Mr Pui must not appear before Game Station');}
+for(let i=1001;i<=2160;i++){const state=experienceState(i/1000),before=experienceState((i-1)/1000);assert.equal(state.game,true);assert.ok(state.train>before.train,'Train must never park at the former mentor stop');assert.equal(state.focus,0);assert.equal(state.arrival,0);assert.match(state.phase,/GAME STATION/);assert.ok(!state.mentor,'Mr Pui must not appear before Game Station');}
 const mentorStop=experienceState(9.9);
 assert.equal(mentorStop.train,4.85);assert.equal(mentorStop.focus,1);assert.equal(mentorStop.door,1);assert.equal(mentorStop.mentor,true);
 assert.match(mentorStop.phase,/MR PUI YUH TZER/);
@@ -124,3 +124,9 @@ for(const boundary of [1,2.16,8.5,8.72,9.52,9.9,10.12,10.92]){
  assert.ok(Math.abs(before.door-after.door)<1e-5,'No snapping doors at revised route boundaries');
 }
 console.log('PASS: event navigation skips the former mentor stop and visits Joanne → Mr Pui → Thank You in both directions.');
+
+// A single cruising phase must span both former travel segments without braking midway.
+const directSamples=[.3,.4,.5,.6,.7].map(t=>experienceState(travelProgress(.74,3.22,t)).train);
+const directStep=directSamples[1]-directSamples[0];
+for(let i=2;i<directSamples.length;i++)assert.ok(Math.abs(directSamples[i]-directSamples[i-1]-directStep)<1e-7,'Uniform speed through the removed layover');
+console.log('PASS: no intermediate train stop and steady cruising from Ice Breaker to Monopoly.');

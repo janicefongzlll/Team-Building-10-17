@@ -63,3 +63,6 @@ Short connecting streets, pavements and crossings fill the gaps between the land
 
 ### Team Recipe performance
 The bakery keeps its original camera paths, architecture, equipment, signs and supplied fifteen-card artwork. Small pastries use fewer subdivisions; geometry drops from roughly 1.65 million to 0.60 million triangles in the complete scene. Four static render zones preserve culling, and equipment labels share a texture atlas. Glass renders in one pass without casting solid shadows. Bakery textures and shaders are prepared during startup so arrival does not compile them for the first time. This section uses a two-million-pixel render budget and 2048px shadows; other sections retain their usual resolution and 4096px shadows. Shadows update when the train, doors, lighting or station visibility changes, and are reused while the world is still. Two-sample antialiasing complements supersampling. Local tests cover geometry budgets, single-pass glass, shader preparation and preserved navigation/clearance.
+
+### Direct Ice Breaker → Monopoly journey
+The old mentor layover is removed. A single continuous train movement and a distance-paced camera follow the existing clear railway corridors, with no intermediate parked section. One gesture completes this transition in about 16 seconds, including the title return and arrival; reverse uses the same timing.

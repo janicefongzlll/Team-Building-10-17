@@ -31,7 +31,7 @@ function travel(target){cancelReturn();set(target);soundMotion(.025)}
 function animateJourney(target){
  if(returnFrame||Math.abs(progress-target)<.0001)return;
  if(matchMedia('(prefers-reduced-motion: reduce)').matches){travel(target);return}
- const start=progress,started=performance.now(),duration=12500+Math.abs(target-start)*5500;
+ const start=progress,started=performance.now(),directGameLeg=Math.min(start,target)>=.68&&Math.max(start,target)<=3.42&&Math.min(start,target)<2.94,duration=directGameLeg?16000*Math.max(.18,Math.abs(target-start)/2.48):12500+Math.abs(target-start)*5500;
  $('journey').setAttribute('aria-busy','true');
  let elapsed=0,previousTime=started;const frameSamples=[];
  const frame=now=>{
